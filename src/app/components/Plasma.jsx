@@ -43,7 +43,7 @@ void mainImage(out vec4 o, vec2 C) {
   float i, d, z, T = iTime * uSpeed * uDirection;
   vec3 O, p, S;
 
-  for (vec2 r = iResolution.xy, Q; ++i < 60.; O += o.w/d*o.xyz) {
+  for (vec2 r = iResolution.xy, Q; ++i < 32.; O += o.w/d*o.xyz) {
     p = z*normalize(vec3(C-.5*r,r.y)); 
     p.z -= 4.; 
     S = p;
@@ -104,7 +104,7 @@ export const Plasma = ({
             webgl: 2,
             alpha: true,
             antialias: false,
-            dpr: Math.min(window.devicePixelRatio || 1, 1.5)
+            dpr: 1.0
         });
         const gl = renderer.gl;
         const canvas = gl.canvas;
@@ -163,8 +163,31 @@ export const Plasma = ({
         setSize();
 
         let raf = 0;
+        let isVisible = true;
         const t0 = performance.now();
+
+        const handleVisibilityChange = () => {
+            isVisible = !document.hidden;
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        let lastFrameTime = 0;
+        const fpsLimit = 40;
+        const frameInterval = 1000 / fpsLimit;
+
         const loop = t => {
+            if (!isVisible) {
+                raf = requestAnimationFrame(loop);
+                return;
+            }
+
+            const deltaTime = t - lastFrameTime;
+            if (deltaTime < frameInterval) {
+                raf = requestAnimationFrame(loop);
+                return;
+            }
+            lastFrameTime = t - (deltaTime % frameInterval);
+
             let timeValue = (t - t0) * 0.001;
             if (direction === 'pingpong') {
                 const pingpongDuration = 10;
@@ -186,6 +209,7 @@ export const Plasma = ({
         return () => {
             cancelAnimationFrame(raf);
             ro.disconnect();
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
             if (mouseInteractive && containerEl) {
                 containerEl.removeEventListener('mousemove', handleMouseMove);
             }

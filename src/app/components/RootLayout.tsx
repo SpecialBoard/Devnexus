@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
 import { SmoothScroll } from "./SmoothScroll";
@@ -7,6 +7,12 @@ import GradualBlur from "./GradualBlur";
 import Plasma from "./Plasma";
 
 export function RootLayout() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <SmoothScroll>
       {/* Global Plasma Background for Dark Mode */}

@@ -6,6 +6,7 @@ import { FadeIn, SlideIn, ScaleIn } from "../components/AnimatedSection";
 import { useRef } from "react";
 import GradualBlur from "../components/GradualBlur";
 import GlassSurface from "../components/GlassSurface";
+import FrostedGlass from "../components/FrostedGlass";
 
 export function Home() {
   const heroRef = useRef(null);
@@ -78,10 +79,10 @@ export function Home() {
 
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32"
+          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-32"
         >
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-12 items-center text-center md:text-left">
+            <div className="space-y-6 md:space-y-8 flex flex-col items-center md:items-start">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -97,7 +98,7 @@ export function Home() {
                   <span className="text-sm">Trusted by 5000+ Students</span>
                 </motion.div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 text-foreground dark:text-white">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-foreground dark:text-white leading-tight">
                   <motion.span
                     className="block"
                     initial={{ opacity: 0, x: -50 }}
@@ -132,15 +133,12 @@ export function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.9 }}
               >
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link to="/payment">
-                    <GlassSurface
-                      width={200}
-                      height={56}
-                      borderRadius={8}
-                      className="bg-accent text-primary dark:text-white hover:bg-accent/90 shadow-lg shadow-accent/50"
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+                  <Link to="/payment" className="block w-full">
+                    <FrostedGlass
+                      className="bg-accent h-14 rounded-xl flex items-center justify-center px-8 shadow-lg shadow-accent/20"
                     >
-                      <span className="flex items-center text-black dark:text-white font-medium">
+                      <span className="flex items-center text-black dark:text-white font-bold tracking-tight">
                         Apply Now
                         <motion.div
                           animate={{ x: [0, 5, 0] }}
@@ -149,21 +147,18 @@ export function Home() {
                           <ArrowRight className="ml-2" size={20} />
                         </motion.div>
                       </span>
-                    </GlassSurface>
+                    </FrostedGlass>
                   </Link>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link to="/programs">
-                    <GlassSurface
-                      width={200}
-                      height={56}
-                      borderRadius={8}
-                      className="bg-primary/10 dark:bg-white/10 hover:bg-primary/20 dark:hover:bg-white/20 shadow-lg"
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+                  <Link to="/programs" className="block w-full">
+                    <FrostedGlass
+                      className="h-14 rounded-xl flex items-center justify-center px-8"
                     >
-                      <span className="flex items-center text-black dark:text-white font-medium w-full justify-center h-full">
+                      <span className="flex items-center text-black dark:text-white font-bold tracking-tight">
                         Browse Programs
                       </span>
-                    </GlassSurface>
+                    </FrostedGlass>
                   </Link>
                 </motion.div>
               </motion.div>
@@ -489,21 +484,17 @@ export function Home() {
 
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link to="/payment" className="block w-full text-center">
-                  <GlassSurface
-                    width={400}
-                    height={56}
-                    borderRadius={8}
-                    className="bg-gradient-to-r from-accent to-secondary text-primary dark:text-white hover:shadow-xl transition-all relative overflow-hidden group w-full"
-                    style={{ width: "100%" }}
+                  <FrostedGlass
+                    className="bg-gradient-to-r from-accent to-secondary text-primary dark:text-white hover:shadow-xl transition-all relative overflow-hidden group w-full h-14 rounded-xl flex items-center justify-center"
                   >
-                    <span className="relative z-10 w-full text-center block text-black dark:text-white font-medium">Get Started Now</span>
+                    <span className="relative z-10 w-full text-center block text-black dark:text-white font-bold tracking-tight">Get Started Now</span>
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-secondary to-accent"
                       initial={{ x: "-100%" }}
                       whileHover={{ x: 0 }}
                       transition={{ duration: 0.3 }}
                     />
-                  </GlassSurface>
+                  </FrostedGlass>
                 </Link>
               </motion.div>
             </div>
@@ -616,18 +607,15 @@ export function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link to="/payment" className="inline-block">
-              <GlassSurface
-                width={200}
-                height={56}
-                borderRadius={8}
-                className="bg-card text-primary dark:text-white hover:bg-card/90 shadow-2xl"
+            <Link to="/payment" className="inline-block w-full sm:w-auto">
+              <FrostedGlass
+                className="bg-card text-primary dark:text-white hover:bg-card/90 shadow-2xl h-14 px-8 rounded-xl flex items-center justify-center mx-auto"
               >
-                <span className="flex items-center text-black dark:text-white font-medium">
+                <span className="flex items-center text-black dark:text-white font-bold tracking-tight">
                   Apply Now
                   <ArrowRight className="ml-2" size={20} />
                 </span>
-              </GlassSurface>
+              </FrostedGlass>
             </Link>
           </motion.div>
         </div>

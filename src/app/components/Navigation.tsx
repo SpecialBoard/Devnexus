@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import MetallicPaint from "./MetallicPaint";
 import GlassSurface from "./GlassSurface";
+import FrostedGlass from "./FrostedGlass";
 import logo from "./logo.svg";
 
 export function Navigation() {
@@ -56,19 +57,13 @@ export function Navigation() {
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="w-full max-w-7xl pointer-events-auto">
-        <GlassSurface
-          width="100%"
-          height={72}
-          borderRadius={999}
-          borderWidth={1}
-          opacity={0.15}
-          blur={20}
-          className="flex items-center justify-between px-3 h-[72px] shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-white/20 dark:border-white/10"
+        <FrostedGlass
+          className="flex items-center justify-between px-3 h-16 md:h-[72px] rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
         >
           {/* Logo Section */}
-          <div className="flex items-center pl-4 lg:pl-6 min-w-[180px]">
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 relative overflow-hidden rounded-full">
+          <div className="flex items-center pl-2 lg:pl-6 md:min-w-[180px]">
+            <Link to="/" className="flex items-center gap-2 md:gap-3 group">
+              <div className="w-8 h-8 md:w-10 md:h-10 relative overflow-hidden rounded-full">
                 <MetallicPaint
                   imageSrc={logo}
                   seed={42}
@@ -93,7 +88,7 @@ export function Navigation() {
                   tintColor="#feb3ff"
                 />
               </div>
-              <span className="text-xl font-black tracking-tighter text-black dark:text-white uppercase">
+              <span className="text-sm md:text-lg lg:text-xl font-black tracking-tighter text-black dark:text-white uppercase hidden xs:block">
                 DevNexus
               </span>
             </Link>
@@ -138,38 +133,33 @@ export function Navigation() {
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-2 pr-2 lg:pr-4 min-w-[180px] justify-end">
+          <div className="flex items-center gap-2 pr-2 lg:pr-4 md:min-w-[180px] justify-end">
             <button
               onClick={toggleTheme}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-all active:scale-90"
+              className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-all active:scale-90"
             >
-              {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+              {isDarkMode ? <Sun size={16} /> : <Moon size={16} />}
             </button>
-            <Link to="/payment" className="hidden sm:block">
+            <Link to="/payment" className="hidden lg:block">
               <div className="group relative">
-                <GlassSurface
-                  width="auto"
-                  height={40}
-                  borderRadius={999}
-                  className="bg-black dark:bg-white px-6 h-10 flex items-center gap-2 overflow-hidden transition-all group-hover:pr-8"
-                >
+                <div className="bg-black dark:bg-white px-6 h-10 rounded-full flex items-center gap-2 overflow-hidden transition-all group-hover:pr-8">
                   <span className="text-[10px] font-black uppercase tracking-widest text-white dark:text-black whitespace-nowrap">
                     Apply Now
                   </span>
                   <ArrowRight size={14} className="text-white dark:text-black absolute right-4 opacity-0 group-hover:opacity-100 transition-all" />
-                </GlassSurface>
+                </div>
               </div>
             </Link>
 
             {/* Mobile Toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 text-black dark:text-white"
+              className="md:hidden w-8 h-8 flex items-center justify-center rounded-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 text-black dark:text-white"
             >
-              {isOpen ? <X size={20} /> : <Menu size={20} />}
+              {isOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
-        </GlassSurface>
+        </FrostedGlass>
 
         {/* Mobile Menu */}
         <AnimatePresence>
@@ -180,10 +170,8 @@ export function Navigation() {
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               className="absolute top-full left-0 right-0 mt-4 md:hidden pointer-events-auto"
             >
-              <GlassSurface
-                borderRadius={32}
-                blur={30}
-                className="bg-white/80 dark:bg-black/80 border border-black/10 dark:border-white/10 p-4 shadow-2xl"
+              <FrostedGlass
+                className="bg-white/90 dark:bg-black/90 border border-black/10 dark:border-white/10 p-4 shadow-2xl rounded-[32px]"
               >
                 <div className="flex flex-col gap-2">
                   {navLinks.map((link) => (
@@ -213,7 +201,7 @@ export function Navigation() {
                     </div>
                   </Link>
                 </div>
-              </GlassSurface>
+              </FrostedGlass>
             </motion.div>
           )}
         </AnimatePresence>
