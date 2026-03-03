@@ -77,7 +77,7 @@ export function Home() {
 
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 md:py-32"
+          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 md:py-40"
         >
           <div className="flex flex-col md:grid md:grid-cols-2 gap-12 items-center text-center md:text-left">
             <div className="space-y-6 md:space-y-8 flex flex-col items-center md:items-start">
