@@ -97,7 +97,7 @@ export function HowItWorks() {
                 <div className="w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-6 ring-4 ring-accent/5 group-hover:bg-accent group-hover:text-white transition-all duration-300">
                   <step.icon size={28} />
                 </div>
-                <FrostedGlass className="p-8 rounded-[2rem] flex-1 shadow-xl relative overflow-hidden">
+                <FrostedGlass className="p-8 rounded-[2rem] flex-1 shadow-xl relative">
                   <div className="absolute -top-2 -left-2 w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center font-black shadow-lg z-10">
                     {step.number}
                   </div>

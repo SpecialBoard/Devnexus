@@ -151,7 +151,7 @@ export function Programs() {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 bg-white dark:bg-black/40 dark:backdrop-blur-md border-b border-border sticky top-16 z-40 transition-colors">
+      <section className="py-8 bg-white dark:bg-black/40 dark:backdrop-blur-md border-b border-border md:sticky md:top-16 z-40 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
             <Filter size={20} className="text-muted-foreground" />
