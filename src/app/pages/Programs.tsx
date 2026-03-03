@@ -9,11 +9,11 @@ export function Programs() {
   const [selectedDuration, setSelectedDuration] = useState("All");
   const [selectedLevel, setSelectedLevel] = useState("All");
 
-  const programs = [
+  const activePrograms = [
     {
       title: "Full Stack Web Development",
       domain: "IT & Development",
-      duration: "6 months",
+      duration: "1-3 months",
       level: "Intermediate",
       icon: Code,
       skills: ["React", "Node.js", "MongoDB", "REST APIs", "Git"],
@@ -23,7 +23,7 @@ export function Programs() {
     {
       title: "Mobile App Development",
       domain: "IT & Development",
-      duration: "6 months",
+      duration: "1-3 months",
       level: "Intermediate",
       icon: Code,
       skills: ["React Native", "JavaScript", "Firebase", "API Integration"],
@@ -31,29 +31,9 @@ export function Programs() {
       description: "Create cross-platform mobile applications for iOS and Android",
     },
     {
-      title: "Digital Marketing Strategy",
-      domain: "Marketing",
-      duration: "3 months",
-      level: "Beginner",
-      icon: Megaphone,
-      skills: ["SEO", "Social Media Marketing", "Content Marketing", "Google Analytics", "Email Marketing"],
-      tools: ["Google Ads", "Facebook Ads Manager", "Canva", "Mailchimp"],
-      description: "Master digital marketing channels and campaign management",
-    },
-    {
-      title: "Social Media Management",
-      domain: "Marketing",
-      duration: "3 months",
-      level: "Beginner",
-      icon: Megaphone,
-      skills: ["Content Creation", "Community Management", "Influencer Marketing", "Analytics"],
-      tools: ["Hootsuite", "Buffer", "Canva", "Instagram Insights"],
-      description: "Learn to manage and grow social media presence for brands",
-    },
-    {
       title: "Data Science & Analytics",
       domain: "Data Science",
-      duration: "6 months",
+      duration: "1-3 months",
       level: "Advanced",
       icon: Database,
       skills: ["Python", "Machine Learning", "Data Visualization", "SQL", "Statistics"],
@@ -61,64 +41,66 @@ export function Programs() {
       description: "Analyze data and build predictive models for business insights",
     },
     {
-      title: "Business Intelligence",
-      domain: "Data Science",
-      duration: "3 months",
-      level: "Intermediate",
-      icon: Database,
-      skills: ["SQL", "Data Visualization", "Dashboard Design", "Excel", "Reporting"],
-      tools: ["Power BI", "Tableau", "Excel", "Google Data Studio"],
-      description: "Transform data into actionable business insights",
-    },
-    {
       title: "UI/UX Design",
       domain: "Design",
-      duration: "3 months",
+      duration: "1-3 months",
       level: "Beginner",
       icon: Palette,
       skills: ["User Research", "Wireframing", "Prototyping", "Visual Design", "Usability Testing"],
       tools: ["Figma", "Adobe XD", "Miro", "InVision"],
       description: "Design user-centered digital experiences",
     },
+  ];
+
+  const comingSoonPrograms = [
+    {
+      title: "Digital Marketing Strategy",
+      domain: "Marketing",
+      icon: Megaphone,
+      description: "Master digital marketing channels and campaign management",
+    },
+    {
+      title: "Social Media Management",
+      domain: "Marketing",
+      icon: Megaphone,
+      description: "Learn to manage and grow social media presence for brands",
+    },
+    {
+      title: "Business Intelligence",
+      domain: "Data Science",
+      icon: Database,
+      description: "Transform data into actionable business insights",
+    },
     {
       title: "Graphic Design",
       domain: "Design",
-      duration: "3 months",
-      level: "Beginner",
       icon: Palette,
-      skills: ["Typography", "Color Theory", "Branding", "Layout Design"],
-      tools: ["Adobe Illustrator", "Photoshop", "Canva", "Figma"],
       description: "Create stunning visual designs for digital and print media",
     },
     {
       title: "Cybersecurity Fundamentals",
       domain: "Cybersecurity",
-      duration: "6 months",
-      level: "Intermediate",
       icon: Shield,
-      skills: ["Network Security", "Ethical Hacking", "Penetration Testing", "Security Protocols"],
-      tools: ["Kali Linux", "Wireshark", "Metasploit", "Burp Suite"],
       description: "Protect systems and networks from cyber threats",
     },
     {
       title: "Financial Analysis",
       domain: "Finance",
-      duration: "3 months",
-      level: "Intermediate",
       icon: DollarSign,
-      skills: ["Financial Modeling", "Excel", "Valuation", "Ratio Analysis", "Forecasting"],
-      tools: ["Excel", "Bloomberg Terminal", "QuickBooks", "Tableau"],
       description: "Analyze financial data and make investment recommendations",
     },
   ];
 
-  const domains = ["All", "IT & Development", "Marketing", "Data Science", "Design", "Cybersecurity", "Finance"];
-  const durations = ["All", "3 months", "6 months"];
+  const domains = ["All", "IT & Development", "Data Science", "Design"];
+  const durations = ["All", "1 Month", "2 Months", "3 Months"];
   const levels = ["All", "Beginner", "Intermediate", "Advanced"];
 
-  const filteredPrograms = programs.filter((program) => {
+  const filteredPrograms = activePrograms.filter((program) => {
     const domainMatch = selectedDomain === "All" || program.domain === selectedDomain;
-    const durationMatch = selectedDuration === "All" || program.duration === selectedDuration;
+    const durationMatch = selectedDuration === "All" ||
+      (selectedDuration === "1 Month" && program.duration.includes("1")) ||
+      (selectedDuration === "2 Months" && program.duration.includes("2")) ||
+      (selectedDuration === "3 Months" && program.duration.includes("3"));
     const levelMatch = selectedLevel === "All" || program.level === selectedLevel;
     return domainMatch && durationMatch && levelMatch;
   });
@@ -334,6 +316,47 @@ export function Programs() {
               </motion.div>
             )}
           </AnimatePresence>
+
+          {/* Coming Soon Section */}
+          <div className="mt-24">
+            <FadeIn className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-full mb-4">
+                <Sparkles size={16} />
+                <span className="text-sm font-medium">Coming Soon</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl mb-4">Upcoming Programs</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                We're constantly expanding our curriculum. These programs are currently under development.
+              </p>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {comingSoonPrograms.map((program, index) => {
+                const Icon = program.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 0.6, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="grayscale"
+                  >
+                    <div className="p-6 bg-card/20 backdrop-blur-sm border border-border/50 rounded-2xl h-full relative overflow-hidden group">
+                      <div className="absolute top-4 right-4 bg-muted/50 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                        Notify Me
+                      </div>
+                      <div className="w-12 h-12 bg-muted/50 text-muted-foreground rounded-lg flex items-center justify-center mb-4">
+                        <Icon size={24} />
+                      </div>
+                      <h3 className="text-lg mb-2">{program.title}</h3>
+                      <p className="text-sm text-muted-foreground">{program.description}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
     </div>

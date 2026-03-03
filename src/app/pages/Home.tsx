@@ -20,12 +20,10 @@ export function Home() {
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   const categories = [
-    { icon: Code, title: "IT & Development", description: "Web, mobile & software development", color: "from-blue-500 to-cyan-500" },
-    { icon: Megaphone, title: "Digital Marketing", description: "SEO, social media & content marketing", color: "from-pink-500 to-rose-500" },
-    { icon: Database, title: "Data Science", description: "Analytics, ML & data visualization", color: "from-purple-500 to-indigo-500" },
-    { icon: Palette, title: "UI/UX Design", description: "Product design & user research", color: "from-orange-500 to-amber-500" },
-    { icon: Shield, title: "Cybersecurity", description: "Network security & ethical hacking", color: "from-red-500 to-pink-500" },
-    { icon: TrendingUp, title: "Finance", description: "Financial analysis & accounting", color: "from-green-500 to-emerald-500" },
+    { icon: Code, title: "Web Development", description: "Frontend, Backend & Full Stack", color: "from-blue-500 to-cyan-500" },
+    { icon: Code, title: "App Development", description: "iOS & Android Development", color: "from-pink-500 to-rose-500" },
+    { icon: Database, title: "Data Science", description: "Analytics, ML & Visualization", color: "from-purple-500 to-indigo-500" },
+    { icon: Palette, title: "UI/UX Design", description: "Product Design & User Research", color: "from-orange-500 to-amber-500" },
   ];
 
   const steps = [
@@ -36,10 +34,10 @@ export function Home() {
   ];
 
   const projects = [
-    { title: "E-commerce Platform Development", skills: "React, Node.js, MongoDB", duration: "3 months", level: "Intermediate" },
-    { title: "Social Media Marketing Campaign", skills: "Instagram, Facebook Ads, Analytics", duration: "2 months", level: "Beginner" },
-    { title: "ML Prediction Model", skills: "Python, TensorFlow, Pandas", duration: "3 months", level: "Advanced" },
-    { title: "Mobile App UI Design", skills: "Figma, Prototyping, User Testing", duration: "2 months", level: "Intermediate" },
+    { title: "E-commerce Platform Development", skills: "React, Node.js, MongoDB", duration: "1-3 months", level: "Intermediate" },
+    { title: "FinTech Mobile App Design", skills: "React Native, Firebase, API", duration: "1-3 months", level: "Intermediate" },
+    { title: "Data Analysis Dashboard", skills: "Python, TensorFlow, Pandas", duration: "1-3 months", level: "Advanced" },
+    { title: "Saas Platform UI Rebranding", skills: "Figma, Prototyping, Research", duration: "1-3 months", level: "Intermediate" },
   ];
 
   const testimonials = [
@@ -461,7 +459,7 @@ export function Home() {
 
               <ul className="space-y-4 mb-8 relative z-10">
                 {[
-                  "3 or 6 month internship program",
+                  "1, 2, or 3 month internship program",
                   "Real industry projects & assignments",
                   "Weekly evaluations & feedback",
                   "Dedicated mentor support",
